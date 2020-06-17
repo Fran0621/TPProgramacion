@@ -3,8 +3,8 @@
  */
 public class Producto {
     // Constantes
-    private static final int STOCK = 0;
-    private static final int PRECIO = 0;
+    protected static final int STOCK = 0;
+    protected static final int PRECIO = 0;
 
     // Atributos
     private int cod;
@@ -80,6 +80,6 @@ public class Producto {
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return "Codigo: " + getCod() + "\nNombre: " + getNombre() + "\nMarca" + getMarca() + "\nStock: " + getStock() + "\nPrecio: " + getPrecio();
+        return  "Codigo: " + getCod() + "\nNombre: " + getNombre() + "\nMarca" + getMarca() + "\nStock: " + getStock() + "\nPrecio: " + getPrecio();
     }
 }
