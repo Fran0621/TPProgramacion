@@ -1,5 +1,5 @@
 /**
- * Prueba
+ * Producto
  */
 public class Producto {
     // Constantes
@@ -30,9 +30,7 @@ public class Producto {
         this.precio = precio;
     }
 
-    /** 
-     * Constructor por defecto
-    */
+    
     public Producto(){
         this(0, "s/d", "s/d", STOCK, PRECIO);
     }
@@ -76,5 +74,12 @@ public class Producto {
 
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+    
+    // ToString
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return "Codigo: " + getCod() + "\nNombre: " + getNombre() + "\nMarca" + getMarca() + "\nStock: " + getStock() + "\nPrecio: " + getPrecio();
     }
 }
