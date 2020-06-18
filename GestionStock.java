@@ -4,41 +4,42 @@ import java.util.ArrayList;
  * GestionStock
  */
 public class GestionStock {
+    private int cantidad;
 
-    private ArrayList<Producto> listaProductos;
+    private final ArrayList<Producto> listaProductos;
 
     public GestionStock() {
         listaProductos = new ArrayList<>();
     }
 
-    public Producto BuscarByCOdigo(int codigo) {
-
-        for (Producto p : listaProductos) {
-
-            if (p.getStock() > 0 && codigo == p.getCod()) {
-                return p;
+    public boolean agregarCdadProducto(final int cod, final int cantidad) {
+        for (final Producto p : listaProductos) {
+            if (cod == p.getCod()) {
+                p.setStock(cantidad);
+                return true;
             }
         }
-        return null;
+        return false;
     }
 
-    public ArrayList<Producto> getListadoProductos() {
-        return listaProductos;
+    public void agregarNuevoProducto(final Producto producto) {
+        listaProductos.add(producto);
     }
 
-    public ArrayList<Producto> ListadoProductosBy(Producto producto) {
-        ArrayList<Producto> arrayAux = new ArrayList<>();
-        
-        for (Producto p : listaProductos) {
-            if (p.equals(producto)) {
-                arrayAux.add(p);
+    public ArrayList<Producto> buscarProductoPrecio(final double precio, final String precioCriterio) {
+        final ArrayList<Producto> arrayAux = new ArrayList<>();
+
+        if (precioCriterio.equalsIgnoreCase("mayor a")) {
+            for (final Producto p : listaProductos) {
+                if(p.getPrecio() > precio){
+                    arrayAux.add(p);         
+                }
+
+                if(p.getPrecio() < precio){
+                    arrayAux.add(p);
+                }
             }
         }
         return arrayAux;
     }
-
-    //Fran continua de aca
-    /* public Producto BuscarProductoBy(String nombre, String marca){
-        
-    } */
 }
