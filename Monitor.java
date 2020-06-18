@@ -48,7 +48,6 @@ public class Monitor extends Producto {
     // ToString
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
         return  super.toString() + "\nTasa de refresco: " + getTasaRefresco() + "Mhz" + "\nPulgadas: " + getPulgadas() + "''";
     }
 

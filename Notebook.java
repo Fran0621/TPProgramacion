@@ -50,7 +50,6 @@ public class Notebook extends Producto {
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
         return super.toString()+ "\nProcesador: " + getProcesador() + "\nMemoria Ram: " + getMemoriaram();
     }
    

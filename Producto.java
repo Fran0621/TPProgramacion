@@ -79,7 +79,6 @@ public class Producto {
     // ToString
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
         return  "Codigo: " + getCod() + "\nNombre: " + getNombre() + "\nMarca" + getMarca() + "\nStock: " + getStock() + "\nPrecio: " + getPrecio();
     }
 }
