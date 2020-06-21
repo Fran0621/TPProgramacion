@@ -14,8 +14,8 @@ public class Monitor extends Producto {
      * @param tasaRefresco
      * @param pulgadas
      */
-    public Monitor(int cod, String nombre, String marca, int stock, double precio, int tasaRefresco, double pulgadas){
-        super(cod, nombre, marca, stock, precio);
+    public Monitor(int cod, String nombre, String marca, int stock, double precio, int tasaRefresco, double pulgadas, int reposicion){
+        super(cod, nombre, marca, stock, precio, reposicion);
         this.tasaRefresco = tasaRefresco;
         this.pulgadas = pulgadas;
     }
@@ -24,7 +24,7 @@ public class Monitor extends Producto {
      * Constructor default
      */
     public Monitor(){
-        this(0, "s/d", "s/d", STOCK, PRECIO, 0, 0);
+        this(0, "s/d", "s/d", STOCK, PRECIO, 0, 0, 0);
     }
 
     // Getters

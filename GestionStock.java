@@ -87,4 +87,46 @@ public class GestionStock {
         }
         return arrayAux;
     }
+
+    //Metodos (Fabri)
+    public boolean BorrarCantidadProductos(int cod, int cantidad)
+    {
+        for (Producto p : listaProductos) {
+            if(p.getStock()>0)
+            {
+                if(cod==p.getCod())
+                {
+                 p.setStock(p.getStock()-cantidad);
+                 return true;
+                }
+             }               
+        }
+        return false;
+    }
+
+
+    public boolean BorrarProducto(int cod)
+    {
+        for (Producto p : listaProductos) {
+            if(p.getStock()==0)
+            {
+                if(cod==p.getCod())
+                {
+                    listaProductos.remove(p);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void AlertaDeStock() {
+        int aux;
+        for (Producto p : listaProductos) {
+            if (p.getStock() < p.getReposicion()) {
+                aux = p.getReposicion()-p.getStock();             
+                System.out.println("¡ATENCIÓN! El stock del producto es bajo, debe reponer: " + aux);
+            }
+        }
+    }
 }

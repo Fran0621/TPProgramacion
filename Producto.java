@@ -7,6 +7,7 @@ public class Producto {
     protected static final int PRECIO = 0;
 
     // Atributos
+    private int reposicion;
     private int cod;
     private String nombre;
     private String marca;
@@ -21,18 +22,19 @@ public class Producto {
      * @param stock
      * @param precio
      */
-    public Producto(int cod, String nombre, String marca, int stock, double precio) {
+    public Producto(int cod, String nombre, String marca, int stock, double precio, int reposicion) {
 
         this.cod = cod;
         this.nombre = nombre;
         this.marca = marca;
         this.stock = stock;
         this.precio = precio;
+        this.reposicion = reposicion;
     }
 
     
     public Producto(){
-        this(0, "s/d", "s/d", STOCK, PRECIO);
+        this(0, "s/d", "s/d", STOCK, PRECIO, 0);
     }
 
     // Getters
@@ -56,6 +58,10 @@ public class Producto {
         return precio;
     }
 
+    public int getReposicion() {
+        return reposicion;
+    }
+
     // Setters
     public void setCod(int cod) {
         this.cod = cod;
@@ -76,6 +82,10 @@ public class Producto {
         this.precio = precio;
     }
     
+    public void setReposicion(int reposicion) {
+        this.reposicion = reposicion;
+    }
+
     // ToString
     @Override
     public String toString() {

@@ -18,16 +18,15 @@ public class Notebook extends Producto {
      * @param procesador
      *
      */
-    public Notebook(String memoriaram, String procesador, int cod, String nombre, String marca, int stock,
-            double precio) {
-        super(cod, nombre, marca, stock, precio);
+    public Notebook(String memoriaram, String procesador, int cod, String nombre, String marca, int stock, double precio, int reposicion) {
+        super(cod, nombre, marca, stock, precio, reposicion);
         this.memoriaram = memoriaram;
         this.procesador = procesador;
     }
 
     public Notebook()
     {
-        this("s/d", "s/d", 0, "s/d", "s/d", STOCK, PRECIO);
+        this("s/d", "s/d", 0, "s/d", "s/d", STOCK, PRECIO, 0);
     }
 
     // Getters
