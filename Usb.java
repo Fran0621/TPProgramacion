@@ -11,6 +11,10 @@ public class Usb extends Producto {
         this.memoria = memoria;
     }
 
+    public Usb(){
+        this(0, "s/d", "s/d", STOCK, PRECIO, "s/d", 0, 0);
+    }
+
     public String getColor() {
         return color;
     }

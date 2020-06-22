@@ -89,6 +89,6 @@ public class Producto {
     // ToString
     @Override
     public String toString() {
-        return  "Codigo: " + getCod() + "\nNombre: " + getNombre() + "\nMarca" + getMarca() + "\nStock: " + getStock() + "\nPrecio: " + getPrecio();
+        return  "Codigo: " + getCod() + "\nNombre: " + getNombre() + "\nMarca: " + getMarca() + "\nStock: " + getStock() + "\nPrecio: " + getPrecio();
     }
 }

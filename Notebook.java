@@ -3,7 +3,7 @@
  */
 public class Notebook extends Producto {
     // Atributos
-    private String memoriaram;
+    private int memoriaram;
     private String procesador;
 
     /**
@@ -18,7 +18,7 @@ public class Notebook extends Producto {
      * @param procesador
      *
      */
-    public Notebook(String memoriaram, String procesador, int cod, String nombre, String marca, int stock, double precio, int reposicion) {
+    public Notebook(int memoriaram, String procesador, int cod, String nombre, String marca, int stock, double precio, int reposicion) {
         super(cod, nombre, marca, stock, precio, reposicion);
         this.memoriaram = memoriaram;
         this.procesador = procesador;
@@ -26,11 +26,11 @@ public class Notebook extends Producto {
 
     public Notebook()
     {
-        this("s/d", "s/d", 0, "s/d", "s/d", STOCK, PRECIO, 0);
+        this(0, "s/d", 0, "s/d", "s/d", STOCK, PRECIO, 0);
     }
 
     // Getters
-    public String getMemoriaram() {
+    public int getMemoriaram() {
         return memoriaram;
     }
 
@@ -39,7 +39,7 @@ public class Notebook extends Producto {
     }
 
     // Setters
-    public void setMemoriaram(String memoriaram) {
+    public void setMemoriaram(int memoriaram) {
         this.memoriaram = memoriaram;
     }
 
