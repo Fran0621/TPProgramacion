@@ -21,6 +21,13 @@ public class Main {
 
         /* Prueba de metodos */
 
+        //Buscar producto por precio\\
+        System.out.println("Buscar producto por precio");
+        System.out.println(gs.BuscarProductoPrecio("mayor a", 500));
+        System.out.println("------------------------");
+        System.out.println(gs.BuscarProductoPrecio("menor a", 500));
+        System.out.println("||||||||||||||||||||||||||||");
+
         //Agregar la cantidad de un producto\\
         System.out.println("Agregar cdad Producto\n");
         System.out.println(gs.agregarCdadProducto(1, 25));

@@ -47,6 +47,15 @@ public class GestionStock {
         listaProductos.add(producto);
     }
 
+    /**
+     * Busca el producto por un criterio de mayor (o menor) a un precio 
+     * 
+     * Recibe:
+     * @param criterio
+     * @param precio
+     * 
+     * @return Un listado con todos los productos que cumplieron con el criterio de busqueda.
+     */
     public ArrayList<Producto> BuscarProductoPrecio(String criterio, double precio) {
         ArrayList<Producto> arrayAux = new ArrayList<>();
 
@@ -144,6 +153,15 @@ public class GestionStock {
     }
 
     // Metodos (Fabri)
+    /**
+     * Borra la cantidad pasada por parametro en stock del producto indicado
+     * 
+     * Recibe:
+     * @param cod
+     * @param cantidad
+     * 
+     * @return true si logró borrarlo, false en caso contrario
+     */
     public boolean borrarCantidadProductos(int cod, int cantidad) {
         for (Producto p : listaProductos) {
             if (p.getStock() > 0) {
@@ -156,6 +174,14 @@ public class GestionStock {
         return false;
     }
 
+    /**
+     * Borra un producto de la lista, siempre y cuando su stock sea 0
+     * 
+     * Recibe:
+     * @param cod
+     * 
+     * @return  true si logró borrarlo, false en caso contrario
+     */
     public boolean borrarProducto(int cod) {
         for (Producto p : listaProductos) {
             if (p.getStock() > 0) {
@@ -168,6 +194,9 @@ public class GestionStock {
         return false;
     }
 
+    /**
+     * Metodo vacio que devuelve un sysout de cada producto que este por debajo del stock minimo
+     */
     public void alertaDeStock() {
         int aux;
         for (Producto p : listaProductos) {
