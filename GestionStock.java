@@ -25,15 +25,14 @@ public class GestionStock {
      * @return true en caso de que lo haya agregado, false en caso contrario
      */
     public boolean agregarCdadProducto(int cod, int cantidad) {
-        for (Producto p : listaProductos) {
-            if (cantidad > p.getStock()) {
-                if (cod == p.getCod()) {
-                    p.setStock(cantidad);
-                    return true;
-                }
-            }
+        Producto p = buscarByCodigo(cod);
+
+        if(p == null){
+            return false;
+        } else {
+            p.setStock(p.getStock() + cantidad);
+            return true;
         }
-        return false;
     }
 
     /**
@@ -43,18 +42,26 @@ public class GestionStock {
      * 
      * @param producto
      */
-    public void agregarProducto(Producto producto) {
-        listaProductos.add(producto);
+    public boolean agregarProducto(Producto producto) {
+        Producto p = buscarByCodigo(producto.getCod());
+        if (p == null) {
+            listaProductos.add(producto);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
-     * Busca el producto por un criterio de mayor (o menor) a un precio 
+     * Busca el producto por un criterio de mayor (o menor) a un precio
      * 
      * Recibe:
+     * 
      * @param criterio
      * @param precio
      * 
-     * @return Un listado con todos los productos que cumplieron con el criterio de busqueda.
+     * @return Un listado con todos los productos que cumplieron con el criterio de
+     *         busqueda.
      */
     public ArrayList<Producto> BuscarProductoPrecio(String criterio, double precio) {
         ArrayList<Producto> arrayAux = new ArrayList<>();
@@ -109,13 +116,15 @@ public class GestionStock {
     }
 
     /**
-     * Itera sobre listaProductos comparando si la clase del producto coincide con la clase pasada por parametro
+     * Itera sobre listaProductos comparando si la clase del producto coincide con
+     * la clase pasada por parametro
      * 
      * Recibe:
+     * 
      * @param filtro
      * @return un array con los productos que coincidieron con el filtro
      */
-    public ArrayList<Producto> listadoProductosByProd(Class<?> filtro) {
+    public ArrayList<Producto> listadoProductosByProd(Class<? extends Producto> filtro) {
 
         ArrayList<Producto> arrayAux = new ArrayList<>();
 
@@ -128,23 +137,29 @@ public class GestionStock {
     }
 
     /**
-     * Busca por nombre o marca independientemente del dato que se le pase (es decir, si se le pasa solo uno buscara por ese mismo parametro)
+     * Busca por nombre o marca independientemente del dato que se le pase (es
+     * decir, si se le pasa solo uno buscara por ese mismo parametro)
      * 
      * Recibe:
+     * 
      * @param nombre
      * @param marca
      * 
-     * @return un listado de todos los productos filtrados por el parametro (en el caso de que los parametros pasados esten vacios devuelve un array vacio)
+     * @return un listado de todos los productos filtrados por el parametro (en el
+     *         caso de que los parametros pasados esten vacios devuelve un array
+     *         vacio)
      */
     public ArrayList<Producto> buscarByNombreMarca(String nombre, String marca) {
         ArrayList<Producto> arrayAux = new ArrayList<>();
 
         if (nombre.isEmpty() && marca.isEmpty()) {
             return arrayAux;
+
         } else {
             for (Producto p : listaProductos) {
 
-                if (p.getNombre().toUpperCase().contains(nombre) || p.getMarca().toUpperCase().contains(marca)) {
+                if (p.getNombre().toUpperCase().contains(nombre.toUpperCase())
+                        || p.getMarca().toUpperCase().contains(marca.toUpperCase())) {
                     arrayAux.add(p);
                 }
             }
@@ -157,52 +172,57 @@ public class GestionStock {
      * Borra la cantidad pasada por parametro en stock del producto indicado
      * 
      * Recibe:
+     * 
      * @param cod
      * @param cantidad
      * 
      * @return true si logró borrarlo, false en caso contrario
      */
     public boolean borrarCantidadProductos(int cod, int cantidad) {
-        for (Producto p : listaProductos) {
-            if (p.getStock() > 0) {
-                if (cod == p.getCod()) {
-                    p.setStock(p.getStock() - cantidad);
-                    return true;
-                }
+        Producto p = buscarByCodigo(cod);
+
+        if(p == null){
+            return false;
+        } else {
+            if(p.getStock() >= cantidad){
+                p.setStock(p.getStock() - cantidad);
+                return true;
+            } else {
+                return false;
             }
         }
-        return false;
     }
 
     /**
      * Borra un producto de la lista, siempre y cuando su stock sea 0
      * 
      * Recibe:
+     * 
      * @param cod
      * 
-     * @return  true si logró borrarlo, false en caso contrario
+     * @return true si logró borrarlo, false en caso contrario
      */
     public boolean borrarProducto(int cod) {
-        for (Producto p : listaProductos) {
-            if (p.getStock() > 0) {
-                if (cod == p.getCod()) {
-                    listaProductos.remove(p);
-                    return true;
-                }
-            }
+        Producto p = buscarByCodigo(cod);
+        if (p == null) {
+            return false;
+        } else {
+            listaProductos.remove(p);
+            return true;
         }
-        return false;
     }
 
     /**
-     * Metodo vacio que devuelve un sysout de cada producto que este por debajo del stock minimo
+     * Metodo vacio que devuelve un sysout de cada producto que este por debajo del
+     * stock minimo
      */
     public void alertaDeStock() {
         int aux;
         for (Producto p : listaProductos) {
             if (p.getStock() < p.getReposicion()) {
                 aux = p.getReposicion() - p.getStock();
-                System.out.println("¡ATENCIÓN! El stock del/los productos " + p.getCod() +" es bajo, debe reponer: " + aux);
+                System.out.println(
+                        "¡ATENCIÓN! El stock del/los productos " + p.getCod() + " es bajo, debe reponer: " + aux);
             }
         }
     }
